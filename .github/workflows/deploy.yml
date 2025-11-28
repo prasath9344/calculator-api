@@ -58,7 +58,7 @@ jobs:
 
       - name: Register task definition
         run: |
-          aws ecs register-task-definition --region us-east-1 --cli-input-json file://crud-api-task.json
+          aws ecs register-task-definition --region us-east-1 --cli-input-json file://calculator-api-task.json
 
       - name: Create an ECS Cluster
         run: |

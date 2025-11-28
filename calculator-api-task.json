@@ -1,0 +1,22 @@
+{
+"family": "crud-api-task",
+"networkMode": "awsvpc",
+"requiresCompatibilities": ["FARGATE"],
+"cpu": "256",
+"memory": "512",
+"executionRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/<ECS_EXECUTION_ROLE>",
+"taskRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/<ECS_TASK_ROLE>",
+"containerDefinitions": [
+{
+"name": "crud-api",
+"image": "<ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/calculator-api:latest",
+"essential": true,
+"portMappings": [
+{
+"containerPort": 3000,
+"protocol": "tcp"
+}
+]
+}
+]
+}
