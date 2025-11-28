@@ -4,12 +4,12 @@
 "requiresCompatibilities": ["FARGATE"],
 "cpu": "256",
 "memory": "512",
-"executionRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/<ECS_EXECUTION_ROLE>",
-"taskRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/<ECS_TASK_ROLE>",
+"executionRoleArn": "arn:aws:iam::575327645493:role/ecstaskexecutionrole",
+"taskRoleArn": "arn:aws:iam::575327645493:role/crud-api-ecs",
 "containerDefinitions": [
 {
 "name": "crud-api",
-"image": "<ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/calculator-api:latest",
+"image": "575327645493.dkr.ecr.us-east-1.amazonaws.com/calculator-api:latest",
 "essential": true,
 "portMappings": [
 {
