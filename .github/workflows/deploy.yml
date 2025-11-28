@@ -1,23 +1,21 @@
-name: Deploy Crud-api-host-new to AWS ECS Fargate
+name: Deploy calculator-api to AWS ECS Fargate
 
 on:
   workflow_dispatch:
     inputs:
       name:
-        description: "Deploy the crud-api-host-new into dev"
+        description: "Deploy the calculator-api into prod"
         default: "dev"
 permissions:
   id-token: write
   contents: read
 env:
-  ECR_REPOSITORY: crud-api # set this to your Amazon ECR repository name
-  ECS_SERVICE: crud-dev-service # set this to your Amazon ECS service name
-  ECS_CLUSTER: crud-api # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: crud-api-task # set this to the path to your Amazon ECS task definition
-    # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: crud-container # set this to the name of the container in the
-    # containerDefinitions section of your task definition
   AWS_REGION: us-east-1
+  ECR_REPOSITORY: calculator
+  ECS_CLUSTER: calculator-cluster
+  ECS_SERVICE: calculator-service
+  ECS_TASK_DEFINITION: ecs-task-definition.json
+  CONTAINER_NAME: calculator
 
 jobs:
   deploy:
@@ -27,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -38,7 +36,7 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+        uses: aws-actions/amazon-ecr-login@v2
 
       - name: Check if Log Group exists
         id: check_log_group
